@@ -1,6 +1,6 @@
 let btn_generate = document.querySelector("#sub");
 // 4b6b8c13891a445185c852a82c9fcf66
-let API_KEY = "3ce9298c607f4739a1349e61ece485fa";
+let API_KEY = "4b6b8c13891a445185c852a82c9fcf66";
 let height = document.querySelector("#height");
 let weight = document.querySelector("#weight");
 let age = document.querySelector("#age");
