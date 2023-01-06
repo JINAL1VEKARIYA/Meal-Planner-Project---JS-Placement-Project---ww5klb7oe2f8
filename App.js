@@ -93,7 +93,6 @@ async function generate_meal_cart(bmr) {
     html += `
           <div class=meals>
             <div class="card">
-                <h2>BreakFast</h2>
                 <div class="image">
                     <img src=${imgURL} alt="Breakfast">
                 </div>
