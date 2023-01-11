@@ -10,7 +10,7 @@ let display = document.querySelector("#display");
 let recipe_detail = document.querySelector("#recipe_detail");
 let ingredients_detail = document.querySelector("#ingredients_detail");
 document.getElementById("recipi-container").style.display = "none";
-
+let load = false;
 let bmr;
 
 const showData = () => {
@@ -52,7 +52,7 @@ async function get_recipe(id) {
     console.log(eve);
     information += `
       
-      <li>${eve.step}</li>
+      <li id="inf">${eve.step}</li>
 
     `;
     recipe_detail.innerHTML = information;
@@ -61,7 +61,7 @@ async function get_recipe(id) {
     console.log(eve);
     ingredients += `
 
-      <p>${eve.name}</p>
+      <li id="ingred">${eve.name}</li>
 
     `;
     ingredients_detail.innerHTML = ingredients;
@@ -69,6 +69,7 @@ async function get_recipe(id) {
 }
 
 async function generate_meal_cart(bmr) {
+  document.getElementById("loader").style.display = "block";
   let result;
   let html = "";
   await fetch(
@@ -78,7 +79,7 @@ async function generate_meal_cart(bmr) {
     .then((data) => {
       result = data;
     });
-
+    document.getElementById("loader").style.display = "none";
   result.meals.map(async (p) => {
     let url = `https://api.spoonacular.com/recipes/${p.id}/information?apiKey=${API_KEY}&includeNutrition=false`;
     let imgURL;
@@ -89,12 +90,12 @@ async function generate_meal_cart(bmr) {
       .then((data) => {
         imgURL = data.image;
       });
-
+      
     html += `
           <div class=meals>
             <div class="card">
                 <div class="image">
-                    <img src=${imgURL} alt="Breakfast">
+                    <img src=${imgURL} alt="Breakfast" loading="lazy">
                 </div>
                 <div class="details">
                     <h4>${p.title}</h4>
