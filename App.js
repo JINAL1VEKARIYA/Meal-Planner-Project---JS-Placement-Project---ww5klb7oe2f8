@@ -48,16 +48,23 @@ async function get_recipe(id) {
     });
 
  document.getElementById("recipi-container").style.display = "flex";
+ information += `
+ <h1>Step</h1>`
   res.analyzedInstructions[0].steps.map((eve) => {
     console.log(eve);
     information += `
-      
+    
       <li id="inf">${eve.step}</li>
 
     `;
     recipe_detail.innerHTML = information;
   });
+  
+  ingredients += `
+    <h1>ingredians<h1>
+    `
   res.extendedIngredients.map((eve) => {
+    
     console.log(eve);
     ingredients += `
 
